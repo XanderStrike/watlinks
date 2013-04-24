@@ -1,40 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
+<h2><%= @post.title %></h2>
 
-<p>
-  <b>Description:</b>
-  <%= @post.description %>
-</p>
-
-<p>
-  <b>Link:</b>
-  <%= @post.link %>
-</p>
-
-<p>
-  <b>Score:</b>
-  <%= @post.score %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @post.user %>
-</p>
-
-<p>
-  <b>Board:</b>
-  <%= @post.board %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @post.category %>
-</p>
+<table class="table table-bordered">
+  <tr>
+    <td>
+      <h4><%= link_to User.find(@post.user).name, "/users/#{@post.user}" %></h4>
+      Type: <%= @post.board %><br>
+      Score: <%= @post.score %><br>
+      Category: <%= @post.category %>
+    </td>
+    <td width="80%">
+      <%= @post.descHTML.html_safe %>
+    </td>
+  </tr>
+</table>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', "/#{@post.board}" %>

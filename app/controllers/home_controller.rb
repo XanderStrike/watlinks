@@ -10,4 +10,7 @@ class HomeController < ApplicationController
 
   def rules
   end
+
+  def blog
+  end
 end

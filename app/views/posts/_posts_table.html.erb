@@ -1,16 +1,53 @@
+<form class="form-search input-append">
+  <input type="text" class="input-large" placeholder="Search"> <button type="submit" class="btn">Search</button>
+</form>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">New Links</a></li>
+    <li><a href="#tab2" data-toggle="tab">Top Today</a></li>
+    <li><a href="#tab3" data-toggle="tab">Top Week</a></li>
+    <li><a href="#tab4" data-toggle="tab">Top Month</a></li>
+    <li><a href="#tab5" data-toggle="tab">Top Overall</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p><strong>New Links</strong></p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p><strong>Top Voted Links Today</strong></p>
+    </div>
+
+    <div class="tab-pane" id="tab3">
+      <p><strong>Top this week</strong></p>
+    </div>
+
+    <div class="tab-pane" id="tab4">
+      <p><strong>Top voted links this month</strong></p>
+    </div>
+
+    <div class="tab-pane" id="tab5">
+      <p><strong>Top voted links overall</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
 <table class="table table-bordered">
   <tr>
     <th width="60%">Title</th>
     <th>Score</th>
     <th>User</th>
+    <th>Date added</th>
     <th>Category</th>
   </tr>
 
 <% posts.each do |post| %>
   <tr>
-    <td><%= link_to post.description, post %></td>
+    <td><%= link_to post.title, post %></td>
     <td><%= post.score %></td>
-    <td><%= post.user %></td>
+    <td><%= link_to User.find(post.user).name, "/users/#{post.user}" %></td>
+    <td><%= post.created_at.strftime("%H:%M %D") %></td>
     <td><%= post.category %></td>
   </tr>
 <% end %>

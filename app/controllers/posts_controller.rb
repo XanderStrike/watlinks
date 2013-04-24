@@ -14,19 +14,19 @@ class PostsController < ApplicationController
   end
 
   def links
-    @posts = Post.all
+    @posts = Post.where(board: "links")
     @board = "Links"
     render 'index'
   end
 
   def requests
-    @posts = Post.all
+    @posts = Post.where(board: "requests")
     @board = "Requests"
     render 'index'
   end
 
   def forums
-    @posts = Post.all
+    @posts = Post.where(board: "forums")
     @board = "Forums"
     render 'index'
   end
@@ -62,6 +62,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save

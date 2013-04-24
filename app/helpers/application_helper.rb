@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def categories 
+    ["music", "movies", "tv", "documentaries", "ebooks"]
+  end
+
 end
