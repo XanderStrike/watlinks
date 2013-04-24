@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Rails3 Bootstrap Devise Cancan" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails3 Bootstrap Devise Cancan" %>">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+
+    <% if user_signed_in? %>
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="page-header">
+              <h1>
+                Watlinks <small>because nolinks is ugly</small>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span2">
+            <ul class="nav nav-list">
+              <li class="nav-header">Navigation</li>
+              <li><a href="">Links</a></li>
+              <li><a href="#">Requests</a></li>
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">Send Invite (0)</a></li>
+              <li class="nav-header">Read This</li>
+              <li><a href="#">Rules</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Dev Blog</a></li>
+              <li class="nav-header"></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+            </ul>
+          </div>
+          <div class="span9">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+
+    <% else %>
+
+      <div class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <%= render 'layouts/login' %>
+          </div>
+        </nav>
+      </div>
+      <div id="main" role="main">
+        <div class="container">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div> <!--! end of .container -->
+      </div> <!--! end of #main -->
+
+    <% end %>
+    
+
+  </body>
+</html>
