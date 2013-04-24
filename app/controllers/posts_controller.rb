@@ -1,13 +1,34 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
 
+    @board = "All posts"
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
     end
+  end
+
+  def links
+    @posts = Post.all
+    @board = "Links"
+    render 'index'
+  end
+
+  def requests
+    @posts = Post.all
+    @board = "Requests"
+    render 'index'
+  end
+
+  def forums
+    @posts = Post.all
+    @board = "Forums"
+    render 'index'
   end
 
   # GET /posts/1

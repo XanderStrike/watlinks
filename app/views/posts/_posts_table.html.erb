@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+  <tr>
+    <th width="60%">Title</th>
+    <th>Score</th>
+    <th>User</th>
+    <th>Category</th>
+  </tr>
+
+<% posts.each do |post| %>
+  <tr>
+    <td><%= link_to post.description, post %></td>
+    <td><%= post.score %></td>
+    <td><%= post.user %></td>
+    <td><%= post.category %></td>
+  </tr>
+<% end %>
+</table>

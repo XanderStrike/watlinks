@@ -1,35 +1,7 @@
-<h1>Listing posts</h1>
+<h2><%= @board %></h2>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Link</th>
-    <th>Score</th>
-    <th>User</th>
-    <th>Board</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.description %></td>
-    <td><%= post.link %></td>
-    <td><%= post.score %></td>
-    <td><%= post.user %></td>
-    <td><%= post.board %></td>
-    <td><%= post.category %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => "posts_table", :locals => {:posts => @posts} %>
 
 <br />
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'Make New Post', new_post_path %>

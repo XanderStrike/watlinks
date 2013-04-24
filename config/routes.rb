@@ -1,8 +1,10 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :comments
   resources :posts
 
-
-	resources :posts
+  match '/links' => 'posts#links'
+  match '/requests' => 'posts#requests'
+  match '/forums' => 'posts#forums'
 
   authenticated :user do
     root :to => 'home#index'
