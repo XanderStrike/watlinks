@@ -13,20 +13,23 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /links
   def links
-    @posts = Post.where(board: "links")
+    @posts = Post.where(board: "links").sort_by(&:created_at).reverse
     @board = "Links"
     render 'index'
   end
 
+  # GET /requests
   def requests
-    @posts = Post.where(board: "requests")
+    @posts = Post.where(board: "requests").sort_by(&:created_at).reverse
     @board = "Requests"
     render 'index'
   end
 
+  # GET /forums
   def forums
-    @posts = Post.where(board: "forums")
+    @posts = Post.where(board: "forums").sort_by(&:created_at).reverse
     @board = "Forums"
     render 'index'
   end

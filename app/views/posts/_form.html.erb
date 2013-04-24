@@ -2,7 +2,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    Title:<br>
+    <%= f.text_field :title, :class => "span6" %><br>
+    Contents: (Flavored with <%= link_to "markdown", "http://daringfireball.net/projects/markdown/" %>)
     <%= f.text_area :description, :class => "span12" %>
     Type<br>
     <%= f.select :board, [['Link','links'],['Request','requests'],['Forum Post','forums']] %>

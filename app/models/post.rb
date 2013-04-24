@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
   validates :description, :presence => true
 
   def descHTML
-  	return self.description.gsub("\n", "<br>")
+  	return BlueCloth.new(self.description).to_html
   end
 end

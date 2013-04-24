@@ -52,20 +52,20 @@
 
 
     <% else %>
-
-      <div class="navbar navbar-fixed-top">
-        <nav class="navbar-inner">
-          <div class="container">
-            <%= render 'layouts/login' %>
-          </div>
-        </nav>
-      </div>
-      <div id="main" role="main">
-        <div class="container">
-          <%= render 'layouts/messages' %>
-          <%= yield %>
-        </div> <!--! end of .container -->
-      </div> <!--! end of #main -->
+<!-- You'll find no secrets here. -->
+<div class="navbar navbar-fixed-top">
+<nav class="navbar-inner">
+<div class="container">
+<%= render 'layouts/login' %>
+</div>
+</nav>
+</div>
+<div id="main" role="main">
+<div class="container">
+<%= render 'layouts/messages' %>
+<%= yield %>
+</div>
+</div>
 
     <% end %>
     
