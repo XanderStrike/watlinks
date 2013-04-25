@@ -12,14 +12,14 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
     resources :comments
 	  resources :posts
 
+    resources :links
+    resources :requests
+    resources :forums
+
 	  match '/faq' => 'home#faq'
 	  match '/rules' => 'home#rules'
 	  match '/blog' => 'home#blog'
     match '/404' => 'home#error404'
-
-	  match '/links' => 'posts#links'
-	  match '/requests' => 'posts#requests'
-	  match '/forums' => 'posts#forums'
 
     match "*path" => redirect("/404")
   end

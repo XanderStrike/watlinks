@@ -1,6 +1,6 @@
-<h2><%= @board %> <small class="pull-right"><%= link_to "Make New #{@board[0..(@board.size-2)]}", new_post_path %></small></h2>
+<h2><%= @board %><%= ": #{@category.capitalize}" unless @category.blank? %> <small class="pull-right"><%= link_to "Make New #{@board[0..(@board.size-2)]}", new_post_path %></small></h2>
 
-<%= render :partial => "posts_table", :locals => {:posts => @posts} %>
+<%= render :partial => "posts/posts_table", :locals => {:posts => @posts} %>
 
 <br />
 
