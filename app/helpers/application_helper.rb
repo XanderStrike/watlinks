@@ -16,4 +16,9 @@ module ApplicationHelper
     ["music", "movies", "television", "documentaries", "books", "misc"]
   end
 
+  def isactive url
+    return "class=active" if (request.fullpath == url)
+    return ""
+  end
+
 end
