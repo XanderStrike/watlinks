@@ -46,6 +46,8 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     @post.user = current_user
+    @post.board = params[:board] unless params[:board].blank?
+    @post.category = params[:category] unless params[:category].blank?
 
     respond_to do |format|
       if @post.save

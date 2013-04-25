@@ -4,12 +4,26 @@
   <div class="form-inputs">
     Title:<br>
     <%= f.text_field :title, :class => "span6" %><br>
+    
     Contents: (Flavored with <%= link_to "markdown", "http://daringfireball.net/projects/markdown/" %>)
     <%= f.text_area :description, :class => "span12" %>
-    Type<br>
-    <%= f.select :board, [['Link','links'],['Request','requests'],['Forum Post','forums']] %>
-    <br>Category<br>
-    <%= f.select :category, categories.map {|c| [c.capitalize, c]} %>
+    
+    
+    <% if @board.blank? %>
+      Type<br>
+      <%= f.select :board, [['Link','links'],['Request','requests'],['Forum Post','forums']] %>
+    <% else %>
+      <%= hidden_field_tag(:board, @board) %>
+    <% end %>
+
+    
+    <% if @category.blank? %>
+      <br>Category<br>
+      <%= f.select :category, categories.map {|c| [c.capitalize, c]} %>
+    <% else %>
+      <%= hidden_field_tag(:category, @category) %>
+    <% end %>
+
   </div>
 
   <div class="form-actions">

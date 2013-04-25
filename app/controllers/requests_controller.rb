@@ -1,15 +1,24 @@
 class RequestsController < ApplicationController
 	def index
-		@posts = Post.where(board: "requests").sort_by(&:created_at).reverse
-    @board = "Requests"
+		@board = "requests"
+    @posts = Post.where(board: @board).sort_by(&:created_at).reverse
+    
     render 'posts/index'
 	end
 
 	def show
-		@board = "Requests"
+		@board = "requests"
 		@category = params[:id]
-		@posts = Post.where(board: "requests", category: @category).sort_by(&:created_at).reverse
+		@posts = Post.where(board: @board, category: @category).sort_by(&:created_at).reverse
 
 		render 'posts/index'
+	end
+
+	def new
+		@board = "requests"
+		@category = params[:in]
+		@post = Post.new
+
+		render 'posts/new'
 	end
 end
