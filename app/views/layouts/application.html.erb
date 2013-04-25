@@ -27,9 +27,35 @@
             <ul class="nav nav-list">
               <li><a href="/">Home</a></li>
               <li class="nav-header">Posts</li>
+
               <li><a href="/links">Links</a></li>
+              <% if request.fullpath.include?('links') %>
+                <ul class="nav nav-list">
+                  <% categories.each do |c| %>
+                    <li><%= link_to c.capitalize, "/links/#{c}" %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+
               <li><a href="/requests">Requests</a></li>
+              <% if request.fullpath.include?('requests') %>
+                <ul class="nav nav-list">
+                  <% categories.each do |c| %>
+                    <li><%= link_to c.capitalize, "/requests/#{c}" %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+
               <li><a href="/forums">Forums</a></li>
+              <% if request.fullpath.include?('forums') %>
+                <ul class="nav nav-list">
+                  <% categories.each do |c| %>
+                    <li><%= link_to c.capitalize, "/forums/#{c}" %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+
+
               <li class="nav-header">Account</li>
               <li><%= link_to "My Profile", current_user %></li>
               <li><a href="#">Send Invite (0)</a></li>
@@ -44,7 +70,7 @@
           <div class="span9">
             <%= yield %>
           <footer>
-            <br><br><br>
+            <br><br><br><%= request.fullpath %>
           </footer>
           </div>
         </div>
@@ -64,11 +90,11 @@
 <div class="container">
 <%= render 'layouts/messages' %>
 <%= yield %>
+
 </div>
 </div>
 
     <% end %>
     
-
   </body>
 </html>

@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def categories 
-    ["music", "movies", "tv", "documentaries", "ebooks"]
+    ["music", "movies", "television", "documentaries", "books", "misc"]
   end
 
 end
