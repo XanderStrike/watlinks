@@ -7,4 +7,8 @@ class Post < ActiveRecord::Base
   def descHTML
   	return BlueCloth.new(self.description).to_html
   end
+
+  def comments
+  	Comment.where(post: self.id)
+  end
 end

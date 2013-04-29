@@ -21,4 +21,19 @@
       <%= @post.descHTML.html_safe %>
     </td>
   </tr>
+
+  <% @post.comments.each do |c| %>
+    <tr>
+      <td>
+        <h4><%= link_to User.find(c.user).name, "/users/#{c.user}" %></h4>
+        Posted on: <%= c.created_at.strftime("%H:%M %D") %></br>
+        <%= "Edited on: #{c.updated_at.strftime("%H:%M %D")}" if c.updated_at != c.created_at %>
+      </td>
+      <td width="80%">
+        <%= c.contHTML.html_safe %>
+      </td>
+    </tr>
+  <% end %>
 </table>
+
+<%= render :partial => 'comments/form' %>
