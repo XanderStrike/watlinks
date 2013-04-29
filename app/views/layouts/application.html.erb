@@ -24,7 +24,7 @@
         </div>
         <div class="row-fluid">
           <div class="span2">
-            <ul class="nav nav-list">
+            <ul class="nav nav-list nav-outer">
               <li <%= isactive("/").html_safe %>><a href="/">Home</a></li>
               <li class="nav-header">Posts</li>
 
@@ -57,6 +57,7 @@
 
               <li class="nav-header">Account</li>
               <li <%= isactive("/users/#{current_user.id}") %>><%= link_to "My Profile", current_user %></li>
+              <li <%= isactive("/users") %> ><a href="/users">Userlist</a></li>
               <li <%= isactive("") %> ><a href="#">Send Invite (0)</a></li>
               <li class="nav-header">Read This</li>
               <li <%= isactive("/rules") %> ><a href="/rules">Rules</a></li>
@@ -87,7 +88,6 @@
 </div>
 <div id="main" role="main">
 <div class="container">
-<%= render 'layouts/messages' %>
 <%= yield %>
 
 </div>
