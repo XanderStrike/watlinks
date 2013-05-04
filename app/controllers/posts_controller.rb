@@ -39,6 +39,18 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+
+    unless params[:score].blank?
+      if params[:score] == "plus"
+        @post.score += 1
+        @post.save
+      elsif params[:score] == "minus"
+        @post.score -= 1
+        @post.save
+      end
+
+      redirect_to "/posts/#{@post.id}"
+    end
   end
 
   # POST /posts
@@ -65,6 +77,8 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    
+
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

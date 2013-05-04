@@ -13,5 +13,11 @@ class User < ActiveRecord::Base
   def posts
   	Post.where(user: self.id)
   end
+
+  def score
+    score = 0
+    Post.where(user: self.id).each {|p| score += p.score}
+    return score
+  end
   
 end

@@ -1,6 +1,7 @@
 <h3><%= @user.name %></h3>
 <p>Username: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>Score: <%= @user.score %>
 
 <h3>Posts</h3>
 <%= render :partial => "/posts/posts_table", :locals => {:posts => @user.posts} %>

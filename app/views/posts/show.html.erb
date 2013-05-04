@@ -14,7 +14,7 @@
       Posted on: <%= @post.created_at.strftime("%H:%M %D") %><br>
       <%= "Edited on: #{@post.updated_at.strftime("%H:%M %D")}" if @post.updated_at != @post.created_at %>
       Type: <%= @post.board %><br>
-      Score: <%= @post.score %><br>
+      Score: <%= link_to "-", "/posts/#{@post.id}/edit?score=minus" %> <%= @post.score %> <%= link_to "+", "/posts/#{@post.id}/edit?score=plus" %><br>
       Category: <%= @post.category %>
     </td>
     <td width="80%">
