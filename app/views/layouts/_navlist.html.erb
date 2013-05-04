@@ -1,0 +1,43 @@
+<ul class="nav nav-list nav-outer">
+  <li <%= isactive("/").html_safe %>><a href="/">Home</a></li>
+  <li class="nav-header">Posts</li>
+
+  <li <%= isactive("/links") %> ><a href="/links">Links</a></li>
+  <% if request.fullpath.include?('links') %>
+    <ul class="nav nav-list">
+      <% categories.each do |c| %>
+        <li <%= isactive("/links/#{c}") %> ><%= link_to c.capitalize, "/links/#{c}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <li <%= isactive("/requests") %> ><a href="/requests">Requests</a></li>
+  <% if request.fullpath.include?('requests') %>
+    <ul class="nav nav-list">
+      <% categories.each do |c| %>
+        <li <%= isactive("/requests/#{c}") %> ><%= link_to c.capitalize, "/requests/#{c}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <li <%= isactive("/forums") %> ><a href="/forums">Forums</a></li>
+  <% if request.fullpath.include?('forums') %>
+    <ul class="nav nav-list">
+      <% categories.each do |c| %>
+        <li <%= isactive("/forums/#{c}") %> ><%= link_to c.capitalize, "/forums/#{c}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <li class="nav-header">Account</li>
+  <li <%= isactive("/users/#{current_user.id}") %>><%= link_to "My Profile", current_user %></li>
+  <li <%= isactive("/users") %> ><a href="/users">Userlist</a></li>
+  <li <%= isactive("") %> ><a href="#">Send Invite (0)</a></li>
+  <li class="nav-header">Read This</li>
+  <li <%= isactive("/rules") %> ><a href="/rules">Rules</a></li>
+  <li <%= isactive("/faq") %> ><a href="/faq">FAQ</a></li>
+  <li <%= isactive("/blog") %> ><a href="/blog">Dev Blog</a></li>
+  <li class="nav-header"></li>
+  <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+</ul>
+
