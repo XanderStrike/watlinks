@@ -41,13 +41,22 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     unless params[:score].blank?
-      if params[:score] == "plus"
-        @post.score += 1
-        @post.save
-      elsif params[:score] == "minus"
-        @post.score -= 1
-        @post.save
+      if @post.users_voted.split(",").include?(current_user.id.to_s)
+        redirect_to "/posts/#{@post.id}"
+        return
+      else
+        if params[:score] == "plus"
+          @post.score += 1
+        elsif params[:score] == "minus"
+          @post.score -= 1
+        else
+          redirect_to "/posts/#{@post.id}"
+          return        
+        end
       end
+
+      @post.users_voted += ",#{current_user.id}"
+      @post.save
 
       redirect_to "/posts/#{@post.id}"
     end
@@ -61,6 +70,8 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.board = params[:board] unless params[:board].blank?
     @post.category = params[:category] unless params[:category].blank?
+    @post.users_voted = "#{current_user.id}"
+    
 
     respond_to do |format|
       if @post.save
