@@ -2,7 +2,7 @@
 
 <h2><%= @post.title %>
   <small class="pull-right">
-    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= "#{link_to 'Edit', edit_post_path(@post)} |".html_safe if @post.user.to_i == current_user.id %>
     <%= link_to 'Back', :back %>
   </small>
 </h2>
