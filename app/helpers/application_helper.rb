@@ -66,7 +66,7 @@ module ApplicationHelper
   end
 
   def version
-    commit = `git show --pretty=%H`
+    commit = `git rev-parse HEAD`
     return commit[0...7]
   end
 end
