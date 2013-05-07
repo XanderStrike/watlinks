@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def categories 
-    ["other", "music", "movies", "television", "documentaries", "books"]
+    ["other", "music", "movies", "television", "documentaries", "books", "software"]
   end
 
   def isactive url
