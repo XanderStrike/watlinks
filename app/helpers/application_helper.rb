@@ -64,4 +64,9 @@ module ApplicationHelper
 
     return Sanitize.clean(string, rules)
   end
+
+  def version
+    commit = `git show --pretty=%H`
+    return commit[0...7]
+  end
 end
