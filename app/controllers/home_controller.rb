@@ -19,4 +19,7 @@ class HomeController < ApplicationController
 
   def userlist
   end
+
+  def invites
+  end
 end

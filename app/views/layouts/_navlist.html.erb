@@ -4,7 +4,7 @@
 
   <li <%= isactive("/links") %> ><a href="/links">Links</a></li>
   <% if request.fullpath.include?('links') %>
-    <ul class="nav nav-list nav-collapse">
+    <ul class="nav nav-list">
       <% categories.each do |c| %>
         <li <%= isactive("/links/#{c}") %> ><%= link_to c.capitalize, "/links/#{c}" %></li>
       <% end %>
@@ -32,7 +32,7 @@
   <li class="nav-header">Account</li>
   <li <%= isactive("/users/#{current_user.id}") %>><%= link_to "My Profile", current_user %></li>
   <li <%= isactive("/userlist") %> ><a href="/userlist">Userlist</a></li>
-  <li <%= isactive("/invites") %> ><a href="/404">Send Invite (0)</a></li>
+  <li <%= isactive("/invites") %> ><a href="/invites">Send Invite (<%= current_user.score/50 %>)</a></li>
   <li class="nav-header">Read This</li>
   <li <%= isactive("/rules") %> ><a href="/rules">Rules</a></li>
   <li <%= isactive("/faq") %> ><a href="/faq">FAQ</a></li>
