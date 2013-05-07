@@ -1,6 +1,6 @@
 <%= simple_form_for(Comment.new) do |f| %>
   <%= f.error_notification %>
-  	Comment: (Flavored with <%= link_to "markdown", "http://daringfireball.net/projects/markdown/" %>)<br>
+  	Comment: (Flavored with <a href="http://daringfireball.net/projects/markdown/", target='_blank'>markdown</a>)<br>
     <%= f.text_area :contents, :rows => 6, :class => "span9" %><br>
     <%= hidden_field_tag(:post, @post.id) %>
     <%= f.button :submit %>
