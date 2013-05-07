@@ -1,0 +1,13 @@
+<h3>User List</h3>
+
+<table class="table">
+	<tr><th>Name</th><th>Posts</th><th>Comments</th><th>Score</th></tr>
+	<% User.all.each do |u| %>
+		<tr>
+			<td><%= link_to u.name, "/users/#{u.id}" %></td>
+			<td><%= u.posts.count %></td>
+			<td><%= u.comments.count %></td>
+			<td><%= u.score %></td>
+		</tr>
+	<% end %>
+</table>

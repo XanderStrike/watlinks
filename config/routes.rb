@@ -3,7 +3,6 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
-  resources :users
 
   authenticated :user do
     root :to => 'home#index'
@@ -15,6 +14,8 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
     resources :links
     resources :requests
     resources :forums
+
+    match '/userlist' => 'home#userlist'
 
 	  match '/faq' => 'home#faq'
 	  match '/rules' => 'home#rules'

@@ -31,7 +31,7 @@
 
   <li class="nav-header">Account</li>
   <li <%= isactive("/users/#{current_user.id}") %>><%= link_to "My Profile", current_user %></li>
-  <li <%= isactive("/users") %> ><a href="/404">Userlist</a></li>
+  <li <%= isactive("/userlist") %> ><a href="/userlist">Userlist</a></li>
   <li <%= isactive("/invites") %> ><a href="/404">Send Invite (0)</a></li>
   <li class="nav-header">Read This</li>
   <li <%= isactive("/rules") %> ><a href="/rules">Rules</a></li>

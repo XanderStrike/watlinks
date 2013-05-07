@@ -14,7 +14,9 @@ class HomeController < ApplicationController
   def blog
   end
 
-  def error404
-    
+  def error404 
+  end
+
+  def userlist
   end
 end

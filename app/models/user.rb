@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   	Post.where(user: self.id)
   end
 
+  def comments
+    Comment.where(user: self.id)
+  end
+
   def score
     score = 0
     Post.where(user: self.id).each {|p| score += p.score}
