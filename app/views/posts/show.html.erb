@@ -18,7 +18,7 @@
       Category: <%= @post.category %>
     </td>
     <td width="80%">
-      <%= @post.descHTML.html_safe %>
+      <%= sanitize(@post.descHTML).html_safe %>
     </td>
   </tr>
 
@@ -30,7 +30,7 @@
         <%= "Edited on: #{c.updated_at.strftime("%H:%M %D")}" if c.updated_at != c.created_at %>
       </td>
       <td width="80%">
-        <%= c.contHTML.html_safe %>
+        <%= sanitize(c.contHTML).html_safe %>
       </td>
     </tr>
   <% end %>

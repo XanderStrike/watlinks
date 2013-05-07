@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   validates :description, :presence => true
 
   def descHTML
-  	return BlueCloth.new(self.description).to_html
+  	BlueCloth.new(self.description).to_html
   end
 
   def comments

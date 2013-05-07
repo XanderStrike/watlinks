@@ -1,7 +1,9 @@
 class Comment < ActiveRecord::Base
   attr_accessible :contents, :post, :user
 
+  validates :contents, :presence => true
+
   def contHTML
-  	return BlueCloth.new(self.contents).to_html
+  	BlueCloth.new(self.contents).to_html
   end
 end
