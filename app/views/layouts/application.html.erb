@@ -16,7 +16,7 @@
         <div class="row-fluid">
           <div class="span12">
             <div class="page-header">
-              <a class="pull-right hidden-desktop" data-toggle="collapse" data-target="#mobileNav"><i class="icon-list"></i></a>
+              <a class="pull-right hidden-desktop" data-toggle="collapse" data-target=".nav-collapse"><i class="icon-list"></i></a>
               <h1>
                 Watlinks <small>because nolinks is ugly </small>
               </h1>
@@ -25,15 +25,7 @@
         </div>
         <div class="row-fluid">
           <div class="span2">
-
-            <div class="hidden-desktop collapse" id="mobileNav">
-              <%= render 'layouts/navlist' %>
-            </div>
-
-            <div class="hidden-phone hidden-tablet" %>
-              <%= render 'layouts/navlist' %>
-            </div>
-
+            <%= render 'layouts/navlist' %>
           </div>
           <div class="span9">
             <%= yield %>
