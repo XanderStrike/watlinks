@@ -35,20 +35,22 @@
 
 <table class="table table-bordered">
   <tr>
-    <th width="60%">Title</th>
+    <th width="50%">Title</th>
+    <th>Replies</th>
     <th>Score</th>
     <th>User</th>
     <th>Date added</th>
-    <th>Category</th>
+    <%= "<th>Category</th>".html_safe if @category.blank? %>
   </tr>
 
 <% posts.each do |post| %>
   <tr>
     <td><%= link_to post.title, post %></td>
+    <td><%= post.comments.count %></td>
     <td><%= post.score %></td>
     <td><%= link_to User.find(post.user).name, "/users/#{post.user}" %></td>
     <td><%= post.created_at.strftime("%H:%M %D") %></td>
-    <td><%= post.category %></td>
+    <%= "<td>#{post.category}</td>".html_safe if @category.blank? %>
   </tr>
 <% end %>
 </table>
