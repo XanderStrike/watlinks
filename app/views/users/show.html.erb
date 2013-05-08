@@ -1,4 +1,4 @@
-<h3><%= @user.name %> <a class="pull-right" href="edit">Edit My Profile</a></h3>
+<h3><%= @user.name %> <%= '<a class="pull-right" href="edit">Edit My Profile</a>'.html_safe if @user == current_user %></h3>
 <%= image_tag(@user.image_url) unless @user.image_url.blank? %>
 <p>Username: <%= @user.name %></p>
 <p>Score: <%= @user.score %>
