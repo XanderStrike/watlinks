@@ -27,7 +27,9 @@
   <% @post.comments.each do |c| %>
     <tr>
       <td>
-        <h4><%= link_to User.find(c.user).name, "/users/#{c.user}" %></h4>
+        <% user = User.find(c.user) %>
+        <h4><%= link_to user.name, "/users/#{c.user}" %></h4>
+        <%= image_tag(user.image_url, :width => '128px') unless user.image_url.blank? %>
         Posted on: <%= c.created_at.strftime("%H:%M %D") %></br>
         <%= "Edited on: #{c.updated_at.strftime("%H:%M %D")}" if c.updated_at != c.created_at %>
       </td>
