@@ -17,16 +17,16 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
 
 
 
-	  match '/faq' => 'home#faq'
-	  match '/rules' => 'home#rules'
-	  match '/blog' => 'home#blog'
-    match '/userlist' => 'home#userlist'
-    match '/invites' => 'home#invites'
-    match '/404' => 'home#error404'
+	  match 'faq' => 'home#faq'
+	  match 'rules' => 'home#rules'
+	  match 'blog' => 'home#blog'
+    match 'userlist' => 'home#userlist'
+    match 'invites' => 'home#invites'
+    match '404' => 'home#error404'
 
-    match "*path" => redirect("/404")
+    # match "*path" => redirect("/404")
   end
   
 
-  match "*path" => redirect("/")
+  # match "*path" => redirect("/")
 end
