@@ -6,7 +6,9 @@
     <%= f.text_field :title, :class => "span6" %><br>
     
     Contents: (Flavored with <a href="http://daringfireball.net/projects/markdown/", target='_blank'>markdown</a>)<br>
-    <%= f.text_area :description, :class => "span12" %>
+    <%= f.text_area :description, :class => "span12", rows: 10, oninput: "this.editor.update()" %>
+
+    <div class="well" id="preview"></div>
     
     
     <% if @board.blank? %>
@@ -30,3 +32,16 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<script>
+  function Editor(input, preview) {
+  this.update = function () {
+  preview.innerHTML = markdown.toHTML(input.value);
+  };
+    input.editor = this;
+    this.update();
+  }
+  var $ = function (id) { return document.getElementById(id); };
+  new Editor($("post_description"), $("preview"));
+</script>
+
